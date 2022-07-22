@@ -13,7 +13,8 @@ function FeebackItem({Rating, Text}) {
 }
 
 FeebackItem.propTypes={
-    item: PropTypes.object.isRequired
+    Rating: PropTypes.number.isRequired,
+    Text: PropTypes.string.isRequired
 }
 
 export default FeebackItem
