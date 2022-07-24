@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import FeedbackItem from './FeebackItem.js'
+import FeedbackItem from './FeedbackItem.js'
 
-function FeedbackList({Feedback}) {
-    if(Feedback.length === 0){
-        <h2>No Feedback Go Back😂</h2>
+function FeedbackList({Feedback, handleDelete}) {
+    if(!Feedback || Feedback.length === 0){
+        return <p>No Feedback Go Back👈</p>
     }
-    else
+    
     return (
                <div className="feedback-list">
-                {Feedback.map((item)=><FeedbackItem key={item.id} Rating={item.rating} Text={item.text}/>)}
+                {Feedback.map((item)=><FeedbackItem key={item.id} item={item} handleDelete={handleDelete}/>)}
                </div>
     )
 }
