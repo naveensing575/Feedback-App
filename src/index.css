@@ -57,6 +57,7 @@ header {
   align-items: center;
   justify-content: space-around;
   margin: 30px 0 40px;
+  color: rgb(19, 20, 40)
 }
 
 .rating li,
@@ -110,8 +111,11 @@ header {
 
 input {
   flex-grow: 2;
-  border: none;
   font-size: 16px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  border-radius: 8px;
 }
 
 input:focus {

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 function Button({children, version, type, isDisabled}) {
   return (
-    <button type={type} disabled={isDisabled} className={`btn btn-${version}`}>
+    <button type={type} disabled={isDisabled} onClick={()=>console.log('Response Sended!')} className={`btn btn-${version}`}>
       {children}
     </button>
   )
