@@ -3,11 +3,11 @@ import { useState } from 'react'
 import Button from './Shared/Button.js';
 import SelectRating from './SelectRating.js';
 
-function FeedbackForm({select}) {
+function FeedbackForm({handleAdd}) {
   const [text, setText]= useState('');
   const [btnDisabled, setbtnDisabled] = useState(true);
   const [message, setMessage] = useState('')
-  const [Rating, setRating] = useState(10)
+  const [rating, setRating] = useState(10)
   const handleClick=(e)=>{
     if(text===''){
       setbtnDisabled(true)
@@ -23,13 +23,21 @@ function FeedbackForm({select}) {
     setText(e.target.value)
   }
   const handleSubmit=(e)=>{
-    e
+    e.preventDefault()
+    if(text.trim().length>10){
+      const newFeedback={
+        text: text,
+        rating: rating
+      }
+      handleAdd(newFeedback)
+      setText('')
+    }
   }
   return (
     <Card>
       <form onSubmit={handleSubmit}>
         <h2>How much would you rate our services?</h2>
-        <SelectRating select={Rating=>setRating(Rating)}/>
+        <SelectRating select={rating=>setRating(rating)}/>
         <div className="input-group">
           <input type="text" placeholder='Write a review' value={text} onChange={handleClick}/>
           <Button type='submit' version='secondary' isDisabled={btnDisabled}>send</Button>
