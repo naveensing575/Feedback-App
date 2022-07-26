@@ -1,9 +1,11 @@
-import Card from './Shared/Card.js'
-import { useState } from 'react'
-import Button from './Shared/Button.js';
-import SelectRating from './SelectRating.js';
+import Card from '../Shared/Card.js'
+import { useState, useContext } from 'react'
+import Button from '../Shared/Button.js';
+import SelectRating from './SelectRating'
+import FeedbackContext from '../Context/FeedbackContext.js';
 
-function FeedbackForm({handleAdd}) {
+function FeedbackForm() {
+  const{addFeedback}= useContext(FeedbackContext)    
   const [text, setText]= useState('');
   const [btnDisabled, setbtnDisabled] = useState(true);
   const [message, setMessage] = useState('')
@@ -29,7 +31,7 @@ function FeedbackForm({handleAdd}) {
         text: text,
         rating: rating
       }
-      handleAdd(newFeedback)
+      addFeedback(newFeedback)
       setText('')
     }
   }

@@ -1,6 +1,8 @@
-import PropTypes from 'prop-types'
+import {useContext} from 'react';
+import FeedbackContext from '../Context/FeedbackContext';
 
-function FeedbackStats({Feedback}) {
+function FeedbackStats() {
+  const{Feedback}= useContext(FeedbackContext)    
   //ratings average
   let avg=Feedback.reduce((acc, curr)=>{
     if(Feedback.length)
@@ -14,15 +16,6 @@ function FeedbackStats({Feedback}) {
       <h4>{Feedback.length} Reviews</h4>
       <h4>Average Rating: {isNaN(avg)?0:avg}</h4>
     </div>
-  )
-}
-FeedbackStats.propTypes={
-  Feedback: PropTypes.arrayOf(
-      PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          rating: PropTypes.number.isRequired,
-          text: PropTypes.string.isRequired
-      })
   )
 }
 
